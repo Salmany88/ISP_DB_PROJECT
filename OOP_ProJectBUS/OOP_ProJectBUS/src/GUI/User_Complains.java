@@ -12,30 +12,34 @@ public class User_Complains extends JFrame{
     private JButton submitButton;
     private JPanel Pannel;
     private JButton backButton;
+    private JTextField namefield;
 
     public User_Complains() {
         add(Pannel);
-        setBounds(550,200,850,550);
+        setBounds(300,100,850,550);
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String Name= namefield.getText();
                 String Complain = textArea.getText();
 
-                if (textArea.getText().equals("")) {
-                    JOptionPane.showMessageDialog(Pannel, " Please fill all fields!");
-                } else {
+                if (namefield.getText().equals("") || textArea.getText().equals("")) {
+                    JOptionPane.showMessageDialog(Pannel, " Please enter all details!");
+                } else
+                {
                     try {
                         Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "ISP_DB", "abc");
                         System.out.print("Connection Sucessful");
-                        String sql = "INSERT INTO Complains(complain_id,user_Complain ) VALUES(complain_id_seq.nextVal,?)";
+                        String sql = "INSERT INTO Complains(complain_id,user_name,user_Complain ) VALUES(complain_id_seq.nextVal,?,?)";
                         PreparedStatement pst = conn.prepareStatement(sql);
-
-                        pst.setString(1, Complain);
+                        pst.setString(1, Name);
+                        pst.setString(2, Complain);
 
 
                         pst.executeQuery();
                         System.out.println("Data saved successfully!");
-                        JOptionPane.showMessageDialog(Pannel, "Route has been Added!");
+                        JOptionPane.showMessageDialog(Pannel, "Complain has been added!");
+                        namefield.setText("");
                         textArea.setText("");
                     } catch (Exception ex) {
                         JOptionPane.showMessageDialog(Pannel, ex);

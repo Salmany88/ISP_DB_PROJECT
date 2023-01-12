@@ -27,7 +27,7 @@ public class RegistrationGUI extends JFrame {
     {
          backButton.setFocusable(false);
          registerButton.setFocusable(false);
-        setBounds(550,200,850,550);
+        setBounds(300,100,850,550);
         setTitle("Welcome to Pakistan Express");
         add(pannel);
 

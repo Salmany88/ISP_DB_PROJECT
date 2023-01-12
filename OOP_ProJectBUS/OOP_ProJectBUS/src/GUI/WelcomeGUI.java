@@ -12,6 +12,7 @@ public class WelcomeGUI extends JFrame
     private JPanel welcomepannel;
     private JPanel Headerpannel;
     private JLabel Title;
+    private JButton aboutButton;
     private JPanel HeaderPanel;
 
 
@@ -39,6 +40,13 @@ public class WelcomeGUI extends JFrame
             public void actionPerformed(ActionEvent actionEvent)
             {
                 new UserLoginGUI().setVisible(true);
+                dispose();
+            }
+        });
+        aboutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                new About().setVisible(true);
                 dispose();
             }
         });

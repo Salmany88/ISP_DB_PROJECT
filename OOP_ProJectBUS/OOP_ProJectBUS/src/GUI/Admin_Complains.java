@@ -1,8 +1,10 @@
 package GUI;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
@@ -11,13 +13,14 @@ import java.sql.Connection;
 
 public class Admin_Complains extends JFrame{
     private JButton backButton;
-    private JPanel Pannel1;
+    private JPanel Pannel;
     private JTable table1;
+    private JScrollPane ScrollPane;
 
 
     public Admin_Complains() {
-        add(Pannel1);
-        setBounds(550,200,850,550);
+        add(Pannel);
+        setBounds(300,100,850,550);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -62,12 +65,24 @@ public class Admin_Complains extends JFrame{
                 }
                 modell.addRow(row);
             }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(Pannel, ex);
         }
 
-        catch(Exception ex){
-            JOptionPane.showMessageDialog(Pannel1, ex);
-        }
         table1=new JTable(modell);
+        table1.setBackground(Color.white);
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        //Cent
+        // er Side
+        DefaultTableCellRenderer Centerrendere=new DefaultTableCellRenderer();
+        Centerrendere.setHorizontalAlignment(JLabel.CENTER);
+        //Index
+        table1.getColumnModel().getColumn(0).setMaxWidth(90);
+        table1.getColumnModel().getColumn(0).setMinWidth(90);
+        table1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+
 
     }
 }
