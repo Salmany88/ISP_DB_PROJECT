@@ -16,7 +16,7 @@ public class UserData extends JFrame {
     public UserData()
     {
         add(Pannel);
-        setBounds(550,200,850,550);
+        setBounds(300,100,850,550);
 
         backButton.addActionListener(new ActionListener() {
             @Override
@@ -31,10 +31,10 @@ public class UserData extends JFrame {
         // TODO: place custom component creation code here
         DefaultTableModel modell=new DefaultTableModel();
         try {
-            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "ISP_DB", "abc");
+            Connection conn = (Connection) DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "ISP_DB", "abc");
             System.out.print("Connection Sucessful");
             // Create a statement
-            Statement stmt = conn.createStatement();
+            Statement stmt = ((java.sql.Connection) conn).createStatement();
 
             // Execute a select query
             String sql = "SELECT * FROM user_SignUp";

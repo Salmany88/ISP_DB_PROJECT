@@ -8,7 +8,7 @@ public class AdminGUIPannel extends JFrame
 {
     private JLabel Title;
     private JButton addBusButton;
-    private JButton addRouteButton;
+    private JButton addConnectionsButton;
     private JButton deleteRouteButton;
     private JButton Bookings;
     private JButton backButton;
@@ -20,17 +20,9 @@ public class AdminGUIPannel extends JFrame
 
     public AdminGUIPannel()
     {
-       // Bookings.setFocusable(false);
-//        addBusButton.setFocusable(false);
-//        addRouteButton.setFocusable(false);
-//        deleteBusButton.setFocusable(false);
-//        deleteRouteButton.setFocusable(false);
-        //Bookings.setFocusable(false);
-//        backButton.setFocusable(false);
-
 
         add(AdminPannel);
-        setBounds(550,200,850,550);
+        setBounds(300,100,850,550);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -39,22 +31,29 @@ public class AdminGUIPannel extends JFrame
             @Override
             public void actionPerformed(ActionEvent actionEvent)
             {
-               new LoginGUI().setVisible(true);
+               new Admin_Login().setVisible(true);
                dispose();
             }
         });
-
         deleteBusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new UserData().setVisible(true);
                 dispose();
             }
+
         });
         addBusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new Admin_Complains().setVisible(true);
+                dispose();
+            }
+        });
+        addConnectionsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                new Admin_AddConnection().setVisible(true);
                 dispose();
             }
         });

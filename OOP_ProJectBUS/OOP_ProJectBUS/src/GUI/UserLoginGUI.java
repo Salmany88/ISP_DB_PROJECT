@@ -26,7 +26,7 @@ public class UserLoginGUI extends JFrame
         loginButton.setFocusable(false);
 
         add(pannel);
-        setBounds(550,200,850,550);
+        setBounds(300,100,850,550);
 
         backButton.addActionListener(new ActionListener() {
             @Override
@@ -42,21 +42,11 @@ public class UserLoginGUI extends JFrame
             {
                 String userName =UserField1.getText();
                 String password = PasswordField2.getText();
-                if (userName.equals("Saud") && password.equals("abc"))
-                {
-                    JOptionPane.showMessageDialog(pannel,"Success");
-                    dispose();
-                    new CustomerPannelGUI().setVisible(true);
-                    UserField1.setText("");
-                    PasswordField2.setText("");
-                }
-                else
-                {
                 try
                 {
                     Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","ISP_DB","abc");
                     System.out.print("Connection Sucessful");
-                    PreparedStatement pst=conn.prepareStatement("Select * from user_SignUp where username=? and user_password=?");
+                    PreparedStatement pst=conn.prepareStatement("Select * from user_SignUp where user_name=? and user_password=?");
                     pst.setString(1,userName);
                     pst.setString(2,password);
                     ResultSet rs=pst.executeQuery();
@@ -81,7 +71,6 @@ public class UserLoginGUI extends JFrame
                 catch(Exception ex)
                 {
                     JOptionPane.showMessageDialog(null,ex);
-                }
                 }
             }
         });

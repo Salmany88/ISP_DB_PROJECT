@@ -17,19 +17,19 @@ public class WelcomeGUI extends JFrame
 
     public WelcomeGUI()
     {
-        //adminButton.setFocusable(false);
-        //userButton.setFocusable(false);
+        adminButton.setFocusable(false);
+        userButton.setFocusable(false);
 
         add(welcomepannel);
         setBackground(Color.WHITE);
-        setBounds(550,200,850,550);
+        setBounds(300,100,850,550);
 
         adminButton.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent actionEvent)
             {
-                new LoginGUI().setVisible(true);
+                new Admin_Login().setVisible(true);
                 dispose();
             }
         });

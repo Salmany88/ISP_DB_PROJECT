@@ -9,10 +9,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Objects;
 
 
-public class LoginGUI extends JFrame
+public class Admin_Login extends JFrame
 {
     private JTextField Usernamefield1;
     private JLabel Username;
@@ -24,18 +23,19 @@ public class LoginGUI extends JFrame
     private JLabel Password;
 
 
-    public LoginGUI()
+    public Admin_Login()
     {
         Login.setFocusable(false);
         backButton.setFocusable(false);
         add(Loginpannel);
-        setBounds(550,200,850,550);
+        setBounds(300,100,850,550);
         Border line = BorderFactory.createLineBorder(Color.white);
         Username.setBorder(line);
         Password.setBorder(line);
         setTitle("Pakistan Express");
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
 
 

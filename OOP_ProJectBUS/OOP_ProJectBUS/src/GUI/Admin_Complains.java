@@ -1,29 +1,30 @@
 package GUI;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
+import java.sql.Connection;
+
 
 public class Admin_Complains extends JFrame{
-    private JTable table1;
     private JButton backButton;
-    private JScrollPane scrollPane1;
-    private JPanel Pannel;
     private JPanel Pannel1;
+    private JTable table1;
+
 
     public Admin_Complains() {
-        add(Pannel);
+        add(Pannel1);
         setBounds(550,200,850,550);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+
         backButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent actionEvent) {
                 new AdminGUIPannel().setVisible(true);
                 dispose();
             }
@@ -61,12 +62,12 @@ public class Admin_Complains extends JFrame{
                 }
                 modell.addRow(row);
             }
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(Pannel, ex);
         }
 
-
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(Pannel1, ex);
+        }
+        table1=new JTable(modell);
 
     }
 }

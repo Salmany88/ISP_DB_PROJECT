@@ -16,14 +16,15 @@ public class CustomerPannelGUI extends JFrame
     public CustomerPannelGUI()
     {
         add(CustomerPannel);
-        setBounds(550,200,850,550);
+        setBounds(300,100,850,550);
         setVisible(true);
         setTitle("Welcome to Pakistan Express");
         bookTicketButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent)
             {
-
+                new User_Connections().setVisible(true);
+                dispose();
             }
         });
         backButton.addActionListener(new ActionListener() {

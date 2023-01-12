@@ -21,6 +21,7 @@ public class RegistrationGUI extends JFrame {
     private JLabel contact;
     private JLabel password;
     private JLabel title;
+    private JTextField textField1;
 
     public RegistrationGUI()
     {
@@ -44,25 +45,25 @@ public class RegistrationGUI extends JFrame {
 
                 String Name = Namefield.getText();
                 String Contact = ContactField2.getText();
-                String Address = AddressField3.getText();
+                String Address = textField1.getText();
                 String Password = passwordfield.getText();
 
                 if (Namefield.getText().equals("")
                         || ContactField2.getText().equals("")
-                        || AddressField3.getText().equals("")
+                        || textField1.getText().equals("")
                         || passwordfield.getText().equals("")) {
                     JOptionPane.showMessageDialog(pannel, " Please fill all fields!");
                 }
-
                 else {
                     try {
                         Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "ISP_DB", "abc");
                         System.out.print("Connection Sucessful");
-                        String sql = "INSERT INTO USER_SIGNUP(user_id,username,user_phone,address,user_password) VALUES(user_id_seq.nextVal,?,?,?,?)";
+                        String sql = "INSERT INTO USER_SIGNUP(user_id,user_name,user_phone,user_address,user_password) VALUES(user_id_seq.nextVal,?,?,?,?)";
                         PreparedStatement pst = conn.prepareStatement(sql);
 
                         pst.setString(1, Name);
                         pst.setString(2, Contact);
+                        pst.setString(3,Address);
                         pst.setString(4, Password);
 
                         pst.executeQuery();
@@ -70,7 +71,7 @@ public class RegistrationGUI extends JFrame {
                         Namefield.setText("");
                         ContactField2.setText("");
                         passwordfield.setText("");
-                        AddressField3.setText("");
+                        textField1.setText("");
 
                     } catch (Exception ex) {
                         JOptionPane.showMessageDialog(pannel, ex);
